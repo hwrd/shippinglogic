@@ -5,6 +5,7 @@ require "shippinglogic/ups/track"
 require "shippinglogic/ups/label"
 require "shippinglogic/ups/ship_confirm"
 require "shippinglogic/ups/ship_accept"
+require "shippinglogic/ups/enumerations"
 
 module Shippinglogic
   class UPS
