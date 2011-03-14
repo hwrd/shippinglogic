@@ -124,22 +124,26 @@ module Shippinglogic
                     b.Code packaging_type
                   end
                   
-                  b.Dimensions do
-                    b.UnitOfMeasurement do
-                      b.Code package_dimension_units
-                    end
+                  if package_length || package_width || package_height
+                    b.Dimensions do
+                      b.UnitOfMeasurement do
+                        b.Code package_dimension_units
+                      end
                     
-                    b.Length "%.2f" % package_length
-                    b.Width "%.2f" % package_width
-                    b.Height "%.2f" % package_height
+                      b.Length "%.2f" % package_length if package_length
+                      b.Width "%.2f" % package_width if package_width
+                      b.Height "%.2f" % package_height if package_height
+                    end
                   end
                   
-                  b.PackageWeight do
-                    b.UnitOfMeasurement do
-                      b.Code package_weight_units
-                    end
+                  if package_weight
+                    b.PackageWeight do
+                      b.UnitOfMeasurement do
+                        b.Code package_weight_units
+                      end
                     
-                    b.Weight "%.1f" % package_weight
+                      b.Weight "%.1f" % package_weight
+                    end
                   end
                   
                   b.PackageServiceOptions do
