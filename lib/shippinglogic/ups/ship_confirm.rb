@@ -113,11 +113,6 @@ module Shippinglogic
               
               b.ShipmentServiceOptions do
                 b.SaturdayDelivery if saturday
-                if signature
-                  b.DeliveryConfirmation do
-                    b.DCISType "1"
-                  end
-                end
               end
               
               package_count.times do |i|
@@ -153,6 +148,11 @@ module Shippinglogic
                       b.InsuredValue do
                         b.MonetaryValue insured_value
                         b.CurrencyCode currency_type
+                      end
+                    end
+                    if signature
+                      b.DeliveryConfirmation do
+                        b.DCISType "2"
                       end
                     end
                   end
