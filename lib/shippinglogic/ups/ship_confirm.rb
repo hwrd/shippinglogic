@@ -29,7 +29,8 @@ module Shippinglogic
       attribute :shipper_country,             :string
       
       # recipient options
-      attribute :recipient_name,              :string
+      attribute :recipient_company_name,      :string
+      attribute :recipient_attention_name,    :string
       attribute :recipient_phone_number,      :string
       attribute :recipient_email,             :string
       attribute :recipient_streets,           :string
@@ -91,7 +92,8 @@ module Shippinglogic
               end
               
               b.ShipTo do
-                b.CompanyName recipient_name
+                b.CompanyName recipient_company_name
+                b.AttentionName recipient_attention_name if recipient_attention_name
                 b.PhoneNumber recipient_phone_number
                 b.EMailAddress recipient_email
                 build_address(b, :recipient)
