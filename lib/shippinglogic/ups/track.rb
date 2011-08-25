@@ -80,10 +80,12 @@ module Shippinglogic
             #FIXME The proper spelling is "occurred", not "occured."
             event.occured_at  = Time.parse(details[:date] + details[:time])
             location          = details[:activity_location][:address]
-            event.city        = location[:city]
-            event.state       = location[:state_province_code]
-            event.postal_code = location[:postal_code]
-            event.country     = location[:country_code]
+            if location
+              event.city        = location[:city]
+              event.state       = location[:state_province_code]
+              event.postal_code = location[:postal_code]
+              event.country     = location[:country_code]
+            end
             event
           end
         end
